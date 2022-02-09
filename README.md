@@ -1,5 +1,5 @@
 # react-nb-spring-mongo-starter
-Docker development environment in separated containers. NetBeans/Vsc support is optional. However, it's recommended. This is a very simple configuration out-of-the-box, and it's inspired by some popular Docker images and builds (awesome-compose/react-nginx, mongoDB). I was compiled both in a single folder, with learning purposes. I thought that it could be useful for you to start coding a project fast, so I decided to share it.
+Docker development environment in separated containers. NetBeans/Vsc support is optional. However, it's recommended. This is a very simple configuration out-of-the-box, and it's inspired by some popular Docker images and builds, such as [awesome-compose](https://github.com/docker/awesome-compose), open-jdk:11, and mongoDB). I've compiled them in a single folder, with learning purposes. I thought that it could be useful for you to start coding a project fast, so I decided to share it.
 
 ***
 
@@ -28,7 +28,7 @@ Then you'll be noticed by the logs in console about  the steps of building new i
 ### Management
 
 Once your environment will be installed and setup, you will be able to manage any of these containers by executing the command 'docker-compose exec' from the same folder level, in example: 
-` docker-compose exec frontend-react bash `
+` docker-compose exec frontend bash `
 Then you will access by bash console, so you'll be able to execute 'npm install' or other command to extend or to manage 'React' and 'Node' dependencies. Some packages would be very useful, such as 'Theme-ui', 'React-router-dom', 'i18next',... 
 
 ### Coding
