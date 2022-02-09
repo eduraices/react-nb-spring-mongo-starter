@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  frontend:
+  frontend: # container for frontend
     build:  # Obtain a new image from an existing one
       context: . # Get from 'Dockerfile' in same folder level
     container_name: frontend-react
@@ -10,3 +10,15 @@ services:
       - "8081:8080" # API calls backend
     volumes:
       - ./src:/app/src
+  database: # container for database 
+    image: mongo # get image from Docker repositories
+    container_name: database-mongo
+    environment:
+      - MONGO_INITDB_DATABASE=books
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    volumes:
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro # user creation script
+      - ./database:/data/db # mongo stored databases
+    ports:
+      - "27017-27019:27017-27019" # 3 ports, first is main, other for replicas
