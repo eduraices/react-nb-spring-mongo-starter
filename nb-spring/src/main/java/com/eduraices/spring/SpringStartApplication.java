@@ -34,7 +34,7 @@ public class SpringStartApplication implements CommandLineRunner {
             bookRepository.save(new Book ( "book2", "Madamme Bovary" ) );
             bookRepository.save(new Book ( "book3", "Los tres mosqueteros" ) );
             bookRepository.save(new Book ( "book4", "La ciudad de los prodigios" ) );
-            bookRepository.save(new Book ( "Los miserables" ) );
+            bookRepository.save(new Book ( "book5", "Los miserables" ) );
             
             publishingRepository.deleteAll();
             

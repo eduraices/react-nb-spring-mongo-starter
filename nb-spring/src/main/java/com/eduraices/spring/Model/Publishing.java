@@ -14,9 +14,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "publishing")
 public class Publishing {
     @Id
-    public String id;
+    public String _id;
     public String title;
-    public String book_id; // reference to book
+    public String bookId; // reference to book
     public String alpha; // standard international localization codes
     public String source; // url, but now we're using plain text as prototype
     
@@ -26,28 +26,28 @@ public class Publishing {
         
     }
     
-    public Publishing (String title, String book_id) {
+    public Publishing (String title, String bookId) {
         this.title = title;
-        this.book_id = book_id;
+        this.bookId = bookId;
     }
     
-    public Publishing (String title, String book_id, String alpha) {
+    public Publishing (String title, String bookId, String alpha) {
         this.title = title;
-        this.book_id = book_id;
+        this.bookId = bookId;
         this.alpha = alpha;
     }
     
-    public Publishing (String title, String book_id, String alpha, String source) {
+    public Publishing (String title, String bookId, String alpha, String source) {
         this.title = title;
-        this.book_id = book_id;
+        this.bookId = bookId;
         this.alpha = alpha;
         this.source = source;
     }
     
-    public Publishing (String id, String title, String book_id, String alpha, String source) {
-        this.id = id;
+    public Publishing (String id, String title, String bookId, String alpha, String source) {
+        this._id = id;
         this.title = title;
-        this.book_id = book_id;
+        this.bookId = bookId;
         this.alpha = alpha;
         this.source = source;
     }
@@ -55,11 +55,11 @@ public class Publishing {
     // Getters and Setters
     
     public String getId () {
-        return this.id;
+        return this._id;
     }
     
     public void setId (String id) {
-        this.id = id;
+        this._id = id;
     }
     
     public String getTitle () {
@@ -71,11 +71,11 @@ public class Publishing {
     }
     
     public String getBookId () {
-        return this.book_id;
+        return this.bookId;
     }
     
     public void setBookId (String book_id) {
-        this.book_id = book_id;
+        this.bookId = bookId;
     }
     
     public String getAlpha () {

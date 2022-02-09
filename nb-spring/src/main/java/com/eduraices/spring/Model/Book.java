@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "book")
 public class Book {
     @Id
-    public String id;
+    public String _id;
     public String title;
     
     public Book () {
@@ -25,23 +25,23 @@ public class Book {
     }
     
     public Book (String id, String title) {
-        this.id = id;
+        this._id = id;
         this.title = title;
     }
     
     public String getId () {
-        return this.id;
+        return this._id;
     }
     
-    public void setId () {
-        this.id = id;
+    public void setId (String id) {
+        this._id = id;
     }
     
     public String getTitle () {
         return this.title;
     }
     
-    public void setTitle () {
+    public void setTitle (String title) {
         this.title = title;
     }
     
