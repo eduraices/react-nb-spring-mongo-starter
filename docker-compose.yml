@@ -5,7 +5,7 @@ services:
       context: . # Get from 'Dockerfile' in same folder level
     container_name: frontend-react
     ports:
-      - "80:80" # nginx (production build disabled in 'Dockerfile')
+      #- "80:80" # nginx (production build disabled in 'Dockerfile')
       - "3000:3000" # development server for React frontend
       - "8081:8080" # API calls backend
     volumes:
