@@ -1,12 +1,15 @@
 # react-nb-spring-mongo-starter
 Docker development environment in separated containers. NetBeans/Vsc support is optional. However, it's recommended. This is a very simple configuration out-of-the-box, and it's inspired by some popular Docker images and builds (awesome-compose/react-nginx, mongoDB). I was compiled both in a single folder, with learning purposes. I thought that it could be useful for you to start coding a project fast, so I decided to share it.
 
+***
+
 ## Prerequisites
 
 * Docker daemon and client installed on dev machine, physically
 * LINUX Shell console, basic commands
-* Code editor, NetBeans as in example for backend project, VSC for frontend
-* Basic knowledges about Javascript and Java languages, Html, Css and JSON. 
+* JDK to develop the backend outside the container, you'll need to install Spring Boot library, too.
+* Code editor, better an IDE with JDK and JVM capabilities, NetBeans as in example for backend project, VSC could be a nice choice for both, backend and frontend (install Spring library)
+* Basic knowledges about Javascript and Java languages, Html, Css and JSON 
 
 ## Configuration
 
@@ -14,11 +17,11 @@ Docker development environment in separated containers. NetBeans/Vsc support is 
 * Open new shell allocated in ~/DownloadedFolder
 * In the same folder level (where the file named 'docker-compose.yml' is stored), execute from shell the command ´´´ docker-compose up ´´´, then you'll be noticed by the logs in console about  the steps of building new images and setting up containers in Docker, it may take some minutes, only the first time it was executed, be patience.
 
-### Containers included
+### Services described
 
-* frontend-react: According with file 'package.json' provided, React.js will be installed, so you´ll be noticed that your 'helloReact' is available from address 'http://localhost:3000'.
-* database-mongo: Another container will be setup to start a MongoDB container, where to save your model.
-* backend-spring: Last, another container will be created to test the Spring built application, found in 'target/app-SNAPSHOT.jar'.
+* frontend: According with file 'package.json' provided, React.js will be installed, so you´ll be noticed that your 'helloReact' is available from address 'http://localhost:3000'.
+* database: Another container will be setup to start a MongoDB container, where to save your model.
+* backend: Last, another container will be created to test the Spring built application, found in 'target/app-SNAPSHOT.jar'.
 
 ### Management
 
@@ -29,8 +32,11 @@ Once your environment will be installed and setup, you will be able to manage an
 * Frontend can be coded and compiled from ./src folder
 * Backend can be coded and build from ./java-src folder.
 
-Backend API can be tested visually from the address 'http://localhost:8080' (from you could fetch data responses), while your app to develop in React.js will be served in the address 'http://localhost:3000'.
+Backend API can be tested visually from the address 'http://localhost:8080/books', or 'http://localhost:8080/publishings' (from you could fetch data responses), while your app in React.js will be served from the address 'http://localhost:3000'.
 
-### Tomcat server reads from Built 'backend-spring/target/app.jar
+***
+## Notes about configurations
+
+### Backend open-jdk container run the Built .jar file, wich is found in 'nb-spring/target/springStart-0.0.1-SNAPSHOT.jar'
 
 You have two option there. By default, the file 'app.jar' is served by the container named 'backend-spring'. This container gets the target 'file.jar' built from the NetBeans project included. But if you'll want to use your own Tomcat dev server (maybe from your IDE, most recommendable option while developing) you could disable this container typing 'docker-compose stop backend-spring' in shell (or editing the file 'docker-compose', to change the ports exposed, or to delete or comment the lines related to this container). 
