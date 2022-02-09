@@ -18,6 +18,5 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 public interface PublishingRepository extends MongoRepository<Publishing, String> {
     
     public Page<Publishing> findByTitle ( String title, Pageable pageable);
-    //public Page<Publishing> findByAlpha_2 ( String alpha_2, Pageable pageable);
     public Page<Publishing> findByBookId ( String book_id, Pageable pageable);
 }

@@ -17,34 +17,38 @@ public class Publishing {
     public String id;
     public String title;
     public String book_id; // reference to book
-    public String alpha_2; // standard international localization codes
+    public String alpha; // standard international localization codes
     public String source; // url, but now we're using plain text as prototype
     
     // Constructors
+    
+    public Publishing () {
+        
+    }
     
     public Publishing (String title, String book_id) {
         this.title = title;
         this.book_id = book_id;
     }
     
-    public Publishing (String title, String book_id, String alpha_2) {
+    public Publishing (String title, String book_id, String alpha) {
         this.title = title;
         this.book_id = book_id;
-        this.alpha_2 = alpha_2;
+        this.alpha = alpha;
     }
     
-    public Publishing (String title, String book_id, String alpha_2, String source) {
+    public Publishing (String title, String book_id, String alpha, String source) {
         this.title = title;
         this.book_id = book_id;
-        this.alpha_2 = alpha_2;
+        this.alpha = alpha;
         this.source = source;
     }
     
-    public Publishing (String id, String title, String book_id, String alpha_2, String source) {
+    public Publishing (String id, String title, String book_id, String alpha, String source) {
         this.id = id;
         this.title = title;
         this.book_id = book_id;
-        this.alpha_2 = alpha_2;
+        this.alpha = alpha;
         this.source = source;
     }
     
@@ -74,12 +78,12 @@ public class Publishing {
         this.book_id = book_id;
     }
     
-    public String getAlpha_2 () {
-        return this.alpha_2;
+    public String getAlpha () {
+        return this.alpha;
     }
     
-    public void setAlpha_2 (String alpha_2) {
-        this.alpha_2 = alpha_2;
+    public void setAlpha (String alpha) {
+        this.alpha = alpha;
     }
     
     public String getSource () {
