@@ -26,16 +26,46 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class PublishingController {
+    
+    // Add methods and attributes to get Book related to (api/publishings/{id}/book/{bookId})
+    
+    // pensar el uso final del objeto, necesidades y tamaño, antes de implementarlo en Book o en Publishing, según proceda
+    
     @Autowired
     private PublishingRepository publishingRepository;
     
-    @GetMapping("/api/publishings/")
+    @GetMapping("/api/publishings")
     public ResponseEntity <Page<Publishing>> findByTitle(@RequestParam(name = "title", required = false) String title, @RequestParam(defaultValue = "0") int page,
       @RequestParam(defaultValue = "10") int size) {
         
         try {
             Pageable paging = PageRequest.of(page, size);
             Page <Publishing> response = this.publishingRepository.findAll(paging);
+            if ( response.isEmpty() ) {
+                
+                return new ResponseEntity(HttpStatus.NO_CONTENT);
+            }
+            else {
+                
+                return ResponseEntity.ok().body(response);
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace().toString());
+            return new ResponseEntity(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            
+        }
+         
+    }
+    
+    @GetMapping("/api/publishings/code")
+    public ResponseEntity <Page<Publishing>> findByAlpha(@RequestParam(name = "alpha", required = false) String parameter, @RequestParam(defaultValue = "0") int page,
+      @RequestParam(defaultValue = "10") int size) {
+        
+        try {
+            Pageable paging = PageRequest.of(page, size);
+            Page <Publishing> response = this.publishingRepository.findByAlpha(parameter,paging);
             if ( response.isEmpty() ) {
                 
                 return new ResponseEntity(HttpStatus.NO_CONTENT);

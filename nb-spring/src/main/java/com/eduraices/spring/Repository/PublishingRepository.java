@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.data.mongodb.repository.Query;
 
 /**
  *
@@ -19,4 +20,7 @@ public interface PublishingRepository extends MongoRepository<Publishing, String
     
     public Page<Publishing> findByTitle ( String title, Pageable pageable);
     public Page<Publishing> findByBookId ( String book_id, Pageable pageable);
+    
+    @Query("{ alpha : ?0 }")
+    public Page<Publishing> findByAlpha ( String alpha, Pageable pageable);
 }

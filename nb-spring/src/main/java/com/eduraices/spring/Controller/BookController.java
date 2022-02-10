@@ -34,10 +34,12 @@ import org.springframework.http.ResponseEntity;
 @RestController
 public class BookController {
     
+    // Add methods and attributes to get Publishings attached (api/books/{id}/publishings)
+    
     @Autowired
     private BookRepository bookRepository;
     
-    @GetMapping("/api/books/")
+    @GetMapping("/api/books")
     public ResponseEntity <Page<Book>> findByTitle(@RequestParam(name = "title", required = false) String title, @RequestParam(defaultValue = "0") int page,
       @RequestParam(defaultValue = "10") int size) {
         

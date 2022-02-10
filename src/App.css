@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+.dark-table, .dark-row, .dark-cell, .dark-head {
+  border-color: white;
+  border-style: solid;
+}
+
+.dark-cell, .dark-head {
+  padding: 0.4rem;
+}
+
+.dark-row, .dark-cell {
+  border-width: 0.06rem;
+}
+
+.dark-head {
+  border-width: 0.08rem;
+}
+
+.inside-table {
+  border-width: 0.10rem;
+}
+
+.outside-table {
+  border-width: 0.15rem;
+}
