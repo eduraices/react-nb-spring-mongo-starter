@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -35,12 +36,12 @@ public class PublishingController {
     private PublishingRepository publishingRepository;
     
     @GetMapping("/api/publishings")
-    public ResponseEntity <Page<Publishing>> findByTitle(@RequestParam(name = "title", required = false) String title, @RequestParam(defaultValue = "0") int page,
+    public ResponseEntity <Page<Publishing>> findByBookId(@RequestParam(name = "bookId", required = false) String parameter, @RequestParam(defaultValue = "0") int page,
       @RequestParam(defaultValue = "10") int size) {
         
         try {
             Pageable paging = PageRequest.of(page, size);
-            Page <Publishing> response = this.publishingRepository.findAll(paging);
+            Page <Publishing> response = this.publishingRepository.findByBookId(parameter, paging);
             if ( response.isEmpty() ) {
                 
                 return new ResponseEntity(HttpStatus.NO_CONTENT);
@@ -59,8 +60,8 @@ public class PublishingController {
          
     }
     
-    @GetMapping("/api/publishings/code")
-    public ResponseEntity <Page<Publishing>> findByAlpha(@RequestParam(name = "alpha", required = false) String parameter, @RequestParam(defaultValue = "0") int page,
+    @GetMapping("/api/publishings/{alpha}")
+    public ResponseEntity <Page<Publishing>> findByAlpha(@PathVariable(name = "alpha", required = false) String parameter, @RequestParam(defaultValue = "0") int page,
       @RequestParam(defaultValue = "10") int size) {
         
         try {

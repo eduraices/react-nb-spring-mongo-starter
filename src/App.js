@@ -1,6 +1,6 @@
 import './App.css';
 import FetchRender from './FetchRender';
-import List from './List';
+import ReferencedList from './ReferencedList';
 
 
 function App() {
@@ -30,7 +30,10 @@ function App() {
                                             </td>
                                             <td className="dark-cell">
                                                 {/* Custom component */}
-                                                <List bookId={item.id} />
+                                                <ReferencedList 
+                                                    fetchUrl={"http://localhost:8080/api/publishings?bookId="} 
+                                                    refId={item.id} 
+                                                />
                                             </td>
                                         </tr>                                     
                                     ))}

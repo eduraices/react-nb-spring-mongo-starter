@@ -1,11 +1,16 @@
 import './App.css';
 import FetchRender from './FetchRender';
 
-
-function List (props) {
+/**
+ * Function component to get a list by props.fetchUrl and props.refId (reference to another table_id)
+ * 
+ * @param {*} props
+ * @returns 
+ */
+function ReferencedList (props) {
 
     return (
-        <FetchRender fetchUrl={"http://localhost:8080/api/publishings"} >
+        <FetchRender fetchUrl={props.fetchUrl + props.refId } >
             { (data) => 
                 <table className="inside-table dark-table">
                     <thead>
@@ -37,4 +42,4 @@ function List (props) {
     )
 }
 
-export default List;
+export default ReferencedList;

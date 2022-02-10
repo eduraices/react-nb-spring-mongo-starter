@@ -40,8 +40,7 @@ public class BookController {
     private BookRepository bookRepository;
     
     @GetMapping("/api/books")
-    public ResponseEntity <Page<Book>> findByTitle(@RequestParam(name = "title", required = false) String title, @RequestParam(defaultValue = "0") int page,
-      @RequestParam(defaultValue = "10") int size) {
+    public ResponseEntity <Page<Book>> findAll(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         
         try {
             Pageable paging = PageRequest.of(page, size);
