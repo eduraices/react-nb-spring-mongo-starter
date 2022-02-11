@@ -1,15 +1,6 @@
 version: "3.7"
 services:
-  frontend: # container for frontend
-    build:  # Obtain a new image from an existing one
-      context: . # Get from 'Dockerfile' in same folder level
-    container_name: frontend-reactjs
-    ports:
-      #- "80:80" # nginx (production build disabled in 'Dockerfile')
-      - "3000:3000" # development server for React frontend
-      - "8081:8080" # API calls backend
-    volumes:
-      - ./src:/app/src
+  ################################################################################
   database: # container for database 
     image: mongo # get image from Docker repositories
     container_name: database-mongodb
@@ -22,3 +13,49 @@ services:
       - ./database:/data/db # mongo stored databases
     ports:
       - "27017-27019:27017-27019" # 3 ports, first is main, other for replicas
+    networks:
+      - backend-net
+    healthcheck:
+      test: ["CMD", "ps"]
+      interval: 5s
+      timeout: 10s
+      retries: 3
+  ##################################################################################
+  frontend: # container for frontend
+    build:  # Obtain a new image from an existing one
+      context: . # Get from 'Dockerfile' in same folder level
+    container_name: frontend-reactjs
+    ports:
+      #- "80:80" # nginx (production build disabled in 'Dockerfile')
+      - "3000:3000" # development server for React frontend
+      - "8081:8080" # API calls backend,
+    networks:
+      - frontend-net
+    volumes:
+      - ./src:/app/src
+  ##################################################################################
+  backend:
+    image: openjdk:11
+    container_name: backend-spring
+    volumes:
+      - ./nb-spring/target/springStart-0.0.1-SNAPSHOT.jar:/app.jar
+    ports:
+      - "8080:8080" # choose one different to Tomcat server
+      - "17017:17017"
+    networks:
+      - backend-net
+      - frontend-net
+    restart: on-failure
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - MONGODB_URI=mongodb://writer:writer@localhost:27017/books
+    command: ['java','-jar','/app.jar']
+  ###################################################################################
+networks:
+  frontend-net:
+    driver: bridge
+  backend-net:
+    driver: bridge
+    
