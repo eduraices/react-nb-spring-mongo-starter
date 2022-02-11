@@ -9,7 +9,7 @@ Docker development environment in separated containers. NetBeans/Vsc support is 
 * **Linux 'shell'** basic commands
 * **JDK** to develop the backend outside the container, so you'll need to **install [Spring Boot packages](http://www.profesor-p.com/2018/08/27/instalar-plugin-spring-boot-con-netbeans-9-en-ubuntu-18-04/)** (spanish guide), too.
 * **Code editor, better an IDE** with JDK and JVM capabilities, NetBeans as in example for backend project, VSC could be a nice choice for both, backend and frontend (don't forget to install Spring libraries)
-* Basic knowledges about **Javascript**, **Java**, **HTML**,** CSS**, **JSX**, **JSON**, **Docker**, **NoSQL** 
+* Basic knowledges about **Javascript**, **Java**, **HTML**,**CSS**, **JSX**, **JSON**, **Docker**, **NoSQL** 
 
 ## Configuration
 

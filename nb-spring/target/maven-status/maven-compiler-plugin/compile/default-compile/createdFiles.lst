@@ -1,0 +1,7 @@
+com/eduraices/spring/Repository/PublishingRepository.class
+com/eduraices/spring/Model/Publishing.class
+com/eduraices/spring/SpringStartApplication.class
+com/eduraices/spring/Repository/BookRepository.class
+com/eduraices/spring/Model/Book.class
+com/eduraices/spring/Controller/PublishingController.class
+com/eduraices/spring/Controller/BookController.class
