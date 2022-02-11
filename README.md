@@ -43,4 +43,18 @@ Backend API can be tested visually from the address 'http://localhost:8080/books
 
 ### Backend open-jdk container run the Built .jar file, wich is found in 'nb-spring/target/springStart-0.0.1-SNAPSHOT.jar'
 
-You have two option there. By default, the file 'app.jar' is served by the container named 'backend-spring' (not yet implemented). This container will run the target 'file.jar' built from the NetBeans project (target folder). But if you'll want to use your own Tomcat dev server (maybe from your IDE, most recommendable option while developing) you could disable this container typing `docker-compose stop backend` in shell (or editing the file 'docker-compose', to change the ports exposed, or to delete or comment the lines related to this container). 
+You have two option there. By default, the file 'app.jar' is served by the container named 'backend-spring' (not yet implemented). This container will run the target 'file.jar' built from the NetBeans project (target folder). But if you'll want to use your own Tomcat dev server (maybe from your IDE, most recommendable option while developing) you could disable this container typing `docker-compose stop backend` in shell (or editing the file 'docker-compose', to change the ports exposed, or to delete or comment the lines related to this container).
+
+***
+
+## Previews
+
+### Frontend installation
+
+![Installation preview](react-container.png)
+
+***
+
+### Frontend view
+
+![Frontend preview](frontend-preview.png)

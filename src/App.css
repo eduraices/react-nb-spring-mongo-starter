@@ -62,3 +62,7 @@
 .outside-table {
   border-width: 0.15rem;
 }
+
+.signature {
+  margin: 2rem;
+}

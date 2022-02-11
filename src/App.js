@@ -39,7 +39,8 @@ function App() {
                                     ))}
                                     </tbody>
                                 </table> }
-                </FetchRender>    
+                </FetchRender>
+                <p className="signature"><b>eduraices, 2022</b>. This project was inspired by some basic guides for Spring Boot, React.org and MongoDB, also by 'awesome-compose' (see README.md) </p>  
             </header>   
         </div>
     )

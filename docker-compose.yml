@@ -3,7 +3,7 @@ services:
   frontend: # container for frontend
     build:  # Obtain a new image from an existing one
       context: . # Get from 'Dockerfile' in same folder level
-    container_name: frontend-react
+    container_name: frontend-reactjs
     ports:
       #- "80:80" # nginx (production build disabled in 'Dockerfile')
       - "3000:3000" # development server for React frontend
@@ -12,7 +12,7 @@ services:
       - ./src:/app/src
   database: # container for database 
     image: mongo # get image from Docker repositories
-    container_name: database-mongo
+    container_name: database-mongodb
     environment:
       - MONGO_INITDB_DATABASE=books
       - MONGO_INITDB_ROOT_USERNAME=root
