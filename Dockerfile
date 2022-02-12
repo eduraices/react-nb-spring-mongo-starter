@@ -1,6 +1,6 @@
 # 1. For build React app
-FROM node:14 AS development
-
+FROM node:14 AS builder
+LABEL stage=builder
 # Set working directory
 WORKDIR /app
 
@@ -8,10 +8,13 @@ WORKDIR /app
 COPY package.json /app/package.json
 COPY package-lock.json /app/package-lock.json
 
-# Same as npm install
+RUN npm install
+
 RUN npm ci
 
 COPY . /app
+
+RUN npm install
 
 ENV CI=true
 ENV PORT=3000
